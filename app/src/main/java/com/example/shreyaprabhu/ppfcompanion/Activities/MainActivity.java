@@ -2,8 +2,10 @@ package com.example.shreyaprabhu.ppfcompanion.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.IntentCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,24 +16,36 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.shreyaprabhu.ppfcompanion.R;
+import com.example.shreyaprabhu.ppfcompanion.Utils.DateUtils;
+import com.example.shreyaprabhu.ppfcompanion.Utils.ValidateEntry;
 
+import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemSelectedListener {
 
+    EditText amount_deposited;
     EditText date;
+    EditText no_of_years;
+    Button calculate;
+
     static final int DATE_PICKER_ID = 1111;
     private int year;
     private int month;
     private int day;
+    StringBuilder date_string;
+
+    String ppfmode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +76,13 @@ public class MainActivity extends AppCompatActivity
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        //Date Picker
+
         date = (EditText) findViewById(R.id.date);
+        amount_deposited = (EditText) findViewById(R.id.amount);
+        no_of_years = (EditText) findViewById(R.id.year);
+        calculate = (Button) findViewById(R.id.calculate);
+
+        //Date Picker
         date.setText(Calendar.getInstance().toString());
         Calendar calendar = Calendar.getInstance();
 
@@ -71,13 +90,38 @@ public class MainActivity extends AppCompatActivity
         day= calendar.get(Calendar.DAY_OF_MONTH);
         month = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
-        showDate(day, month, year);
+        date_string = DateUtils.showDate(day,month,year);
+        date.setText(date_string);
 
         //DATE DIALOG BOX
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog(DATE_PICKER_ID);
+            }
+        });
+
+
+        calculate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,PPFReport.class);
+
+                String no_of_year = no_of_years.getText().toString();
+                String amount = amount_deposited.getText().toString();
+
+
+                try {
+                    if(ValidateEntry.validate(amount,no_of_year,day,month,year,date_string.toString())){
+                        i.putExtra("amountmessage", amount);
+                        i.putExtra("noOfyearmessage",no_of_year);
+                        i.putExtra("startdatemessage",date_string.toString());
+                        i.putExtra("ppfmodemessage", ppfmode);
+                        Toast.makeText(MainActivity.this,"validated" + amount + no_of_year + date_string.toString() + ppfmode,Toast.LENGTH_LONG).show();
+                        startActivity(i);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -106,17 +150,12 @@ public class MainActivity extends AppCompatActivity
             year = selectedYear;
             month = selectedMonth;
             day = selectedDay;
-            showDate(day,month,year);
-
+            date_string = DateUtils.showDate(day,month,year);
+            date.setText(date_string);
         }
     };
 
-    public void showDate(int day, int month, int year) {
-        date.setText(new StringBuilder().append(day)
-                .append("-").append(month + 1).append("-").append(year)
-                .append(" "));
 
-    }
 
     @Override
     public void onBackPressed() {
@@ -178,6 +217,7 @@ public class MainActivity extends AppCompatActivity
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         Toast.makeText(this,"Selected mode is " + adapterView.getItemAtPosition(i),Toast.LENGTH_SHORT).show();
+        ppfmode = adapterView.getItemAtPosition(i).toString();
     }
 
     @Override
