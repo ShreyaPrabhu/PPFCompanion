@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PPFCompanion</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!--nav_header_main.xml-->
+    <string name="by">by Shreya Prabhu</string>
+    <string name="nav_header">Public Provident Fund Calculator</string>
+
+    <!--activity_main_drawer-->
+    <string name="my_plans">My Plans</string>
+    <string name="calculator">Calculator</string>
+    <string name="about_ppf">About PPF</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate Us</string>
+
+    <!-- side_nav_bar -->
+    <string name="angle">135</string>
+</resources>
