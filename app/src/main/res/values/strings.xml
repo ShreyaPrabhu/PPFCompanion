@@ -20,4 +20,7 @@
 
     <!-- side_nav_bar -->
     <string name="angle">135</string>
+
+    <!--content_main -->
+    <string name="mode">Select a PPF Plan</string>
 </resources>
