@@ -30,6 +30,109 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/select_mode" />
+
+    <TextView
+        android:text="@string/amount_deposite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp"
+        android:id="@+id/amount_deposite" />
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/amount_deposite"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:hint="@string/amount_hint"
+        android:id="@+id/amount" />
+
+    <TextView
+        android:text="@string/rate_of_interest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/amount"
+        android:layout_toRightOf="@+id/amount"
+        android:layout_toEndOf="@+id/amount"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:id="@+id/rate_of_interest" />
+
+    <TextView
+        android:text="@string/interest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/amount"
+        android:layout_alignLeft="@+id/rate_of_interest"
+        android:layout_alignStart="@+id/rate_of_interest"
+        android:layout_marginTop="11dp"
+        android:id="@+id/textView6" />
+
+    <TextView
+        android:text="@string/tenure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amount"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp"
+        android:id="@+id/tenure" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/year"
+        android:hint="@string/year_hint"
+        android:layout_alignRight="@+id/select_mode"
+        android:layout_alignEnd="@+id/select_mode" />
+
+    <TextView
+        android:text="@string/start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/year"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="14dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/start_date" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_below="@+id/start_date"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp"
+        android:id="@+id/date"
+        android:layout_alignRight="@+id/amount_deposite"
+        android:layout_alignEnd="@+id/amount_deposite" />
+
+    <Button
+        android:text="@string/calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp"
+        android:id="@+id/calculate"
+        android:layout_alignRight="@+id/tenure"
+        android:layout_alignEnd="@+id/tenure" />
+
+
 </RelativeLayout>

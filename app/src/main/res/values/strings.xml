@@ -23,4 +23,12 @@
 
     <!--content_main -->
     <string name="mode">Select a PPF Plan</string>
+    <string name="amount_deposite">Amount Deposite(\u20B9)</string>
+    <string name="amount_hint">Amount >= 500</string>
+    <string name="rate_of_interest">Rate of Interest(%)</string>
+    <string name="interest">8.10</string>
+    <string name="tenure">Investment Tenure(years)</string>
+    <string name="year_hint">Year >= 15</string>
+    <string name="start_date">Account Opening Date</string>
+    <string name="calculate">Calculate</string>
 </resources>

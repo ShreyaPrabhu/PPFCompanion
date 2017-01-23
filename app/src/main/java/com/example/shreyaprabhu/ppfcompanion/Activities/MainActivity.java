@@ -1,5 +1,7 @@
 package com.example.shreyaprabhu.ppfcompanion.Activities;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,14 +14,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.shreyaprabhu.ppfcompanion.R;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemSelectedListener {
+
+    EditText date;
+    static final int DATE_PICKER_ID = 1111;
+    private int year;
+    private int month;
+    private int day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +61,61 @@ public class MainActivity extends AppCompatActivity
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        //Date Picker
+        date = (EditText) findViewById(R.id.date);
+        date.setText(Calendar.getInstance().toString());
+        Calendar calendar = Calendar.getInstance();
+
+        //SHOW DATE
+        day= calendar.get(Calendar.DAY_OF_MONTH);
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+        showDate(day, month, year);
+
+        //DATE DIALOG BOX
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DATE_PICKER_ID);
+            }
+        });
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_PICKER_ID:
+
+                // open datepicker dialog.
+                // set date picker for current date
+                // add pickerListener listner to date picker
+                return new DatePickerDialog(this, pickerListener, year, month, day);
+
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener pickerListener = new DatePickerDialog.OnDateSetListener() {
+
+        // when dialog box is closed, below method will be called.
+        @Override
+        public void onDateSet(DatePicker view, int selectedYear,
+                              int selectedMonth, int selectedDay) {
+
+            year = selectedYear;
+            month = selectedMonth;
+            day = selectedDay;
+            showDate(day,month,year);
+
+        }
+    };
+
+    public void showDate(int day, int month, int year) {
+        date.setText(new StringBuilder().append(day)
+                .append("-").append(month + 1).append("-").append(year)
+                .append(" "));
+
     }
 
     @Override
