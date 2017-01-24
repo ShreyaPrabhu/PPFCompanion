@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 try {
-                    if(ValidateEntry.validate(amount,no_of_year,day,month,year,date_string.toString())){
+                    if(ValidateEntry.validate(amount,no_of_year,day,month+1,year,date_string.toString())){
                         i.putExtra("amountmessage", amount);
                         i.putExtra("noOfyearmessage",no_of_year);
                         i.putExtra("startdatemessage",date_string.toString());

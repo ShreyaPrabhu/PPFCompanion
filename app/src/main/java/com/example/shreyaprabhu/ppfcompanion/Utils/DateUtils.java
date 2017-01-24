@@ -39,7 +39,7 @@ public class DateUtils {
 
             //if not valid, it will throw ParseException
             Date date = sdf.parse(dateToValidate);
-            Log.v("myTag","myValidDate " + date);
+            //Log.v("myTag","myValidDate " + date);
 
         } catch (ParseException e) {
 
