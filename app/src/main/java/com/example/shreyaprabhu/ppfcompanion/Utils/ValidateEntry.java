@@ -1,5 +1,9 @@
 package com.example.shreyaprabhu.ppfcompanion.Utils;
 
+import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
+
 import java.text.ParseException;
 import java.util.Calendar;
 
@@ -10,38 +14,82 @@ import java.util.Calendar;
 public class ValidateEntry {
 
     static ValidateEntry validateEntry = new ValidateEntry();
+    private static Context mContext;
 
-    public boolean nullCheck(String amount, String no_of_years, int day, int month, int year, String startDate){
-        return (amount==null || no_of_years==null || day==0 || month==0 || year==0 || startDate==null);
+
+    private boolean nullCheck(String amount, String no_of_years, int day, int month, int year, String startDate){
+        boolean x = TextUtils.isEmpty(amount) || TextUtils.isEmpty(no_of_years) || day==0 || month==0 || year==0 || TextUtils.isEmpty(startDate);
+        Log.v("my","x" + x);
+        if(x){
+            CreateDialogBox.alertDialog(mContext,"Please enter all the details");
+            return true;
+        }
+        return false;
     }
+
+
 
     //check for amount
-    public boolean isAmountValid(String amount) {
-        return Integer.parseInt(amount) >= 500;
+    private boolean isAmountValid(String amount) {
+        if(Integer.parseInt(amount) >= 500){
+            return true;
+        }
+        else{
+            CreateDialogBox.alertDialog(mContext,"Amount Deposite should be greater than 500");
+            return false;
+        }
+
     }
 
-    public boolean isNoOfYearsValid(String no_of_years){
-        return Integer.parseInt(no_of_years) >= 15;
+    private boolean isNoOfYearsValid(String no_of_years){
+        if(Integer.parseInt(no_of_years) >= 15){
+            return true;
+        }
+        else{
+            CreateDialogBox.alertDialog(mContext,"No of Years should be 15 years or more");
+            return false;
+        }
+
     }
 
-    public boolean isDateValid(int day, int month, int year){
-        StringBuilder day_string = DateUtils.showDate(day,month,year);
-        return DateUtils.isThisDateValid(day_string.toString());
-    }
 
-    public boolean isStartDateValid(String startDate) throws ParseException {
+    private boolean isStartDateValid(String startDate) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         int day= calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
         StringBuilder date_string = DateUtils.showDate(day,month,year);
-        return DateUtils.compareDates(date_string.toString(),startDate);
+        if(DateUtils.compareDates(date_string.toString(),startDate)){
+            return true;
+        }
+        else{
+            CreateDialogBox.alertDialog(mContext,"Start Date cannot be before present Date " + date_string.toString() );
+            return false;
+        }
+
     }
 
-    public static boolean validate(String amount, String no_of_years, int day, int month, int year, String startDate) throws ParseException {
-        return(!validateEntry.nullCheck(amount,no_of_years,day,month,year,startDate)
-            && validateEntry.isAmountValid(amount) && (validateEntry.isNoOfYearsValid(no_of_years))
-                && (validateEntry.isDateValid(day,month,year)) && (validateEntry.isStartDateValid(startDate)));
+    public boolean isDateValid(int day, int month, int year){
+        StringBuilder day_string = DateUtils.showDate(day,month,year);
+        if(DateUtils.isThisDateValid(day_string.toString())){
+            return true;
+        }
+        else{
+            CreateDialogBox.alertDialog(mContext,"Date " +day_string.toString()+ " is not valid date" );
+            return false;
+        }
 
     }
+
+    public static boolean validate(Context context, String amount, String no_of_years, int day, int month, int year, String startDate) throws ParseException {
+        mContext = context;
+        if(!validateEntry.nullCheck(amount,no_of_years,day,month,year,startDate)){
+            return(validateEntry.isAmountValid(amount) && (validateEntry.isNoOfYearsValid(no_of_years))
+                    && (validateEntry.isDateValid(day,month,year)) && (validateEntry.isStartDateValid(startDate)));
+
+        }
+        return false;
+    }
+
 }
+
