@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,7 +20,10 @@ import com.example.shreyaprabhu.ppfcompanion.R;
 public class PPFReport extends AppCompatActivity {
 
     private ViewPager mViewPager;
-
+    String amountmessage;
+    String noOfyearmessage;
+    String startdatemessage;
+    String ppfmodemessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class PPFReport extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
         TabLayoutListener.tabListener(this,tabLayout,mViewPager);
 
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -46,6 +51,8 @@ public class PPFReport extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
+
+
 
 
     @Override

@@ -1,11 +1,11 @@
-package com.example.shreyaprabhu.ppfcompanion.Utils;
+package com.example.shreyaprabhu.ppfcompanion.DataValidationUtils;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
 /**
- * Created by HP on 24-01-2017.
+ * Created by Shreya Prabhu on 24-01-2017.
  */
 
 public class CreateDialogBox {

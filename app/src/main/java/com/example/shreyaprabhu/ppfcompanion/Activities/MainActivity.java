@@ -22,8 +22,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.shreyaprabhu.ppfcompanion.R;
-import com.example.shreyaprabhu.ppfcompanion.Utils.DateUtils;
-import com.example.shreyaprabhu.ppfcompanion.Utils.ValidateEntry;
+import com.example.shreyaprabhu.ppfcompanion.TabFragments.ReportFragment;
+import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.DateUtils;
+import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.ValidateEntry;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -110,12 +111,12 @@ public class MainActivity extends AppCompatActivity
 
                 try {
                     if(ValidateEntry.validate(MainActivity.this,amount,no_of_year,day,month+1,year,date_string.toString())){
-                        i.putExtra("amountmessage", amount);
-                        i.putExtra("noOfyearmessage",no_of_year);
-                        i.putExtra("startdatemessage",date_string.toString());
-                        i.putExtra("ppfmodemessage", ppfmode);
-                        Toast.makeText(MainActivity.this,"validated" + amount + no_of_year + date_string.toString() + ppfmode,Toast.LENGTH_LONG).show();
-                        startActivity(i);
+                            i.putExtra("amountmessage", amount);
+                            i.putExtra("noOfyearmessage",no_of_year);
+                            i.putExtra("startdatemessage",date_string.toString());
+                            i.putExtra("ppfmodemessage", ppfmode);
+                            Toast.makeText(MainActivity.this,"validated" + amount + no_of_year + date_string.toString() + ppfmode,Toast.LENGTH_LONG).show();
+                            startActivity(i);
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();

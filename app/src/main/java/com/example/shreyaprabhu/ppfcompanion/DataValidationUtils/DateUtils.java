@@ -1,4 +1,4 @@
-package com.example.shreyaprabhu.ppfcompanion.Utils;
+package com.example.shreyaprabhu.ppfcompanion.DataValidationUtils;
 
 import android.util.Log;
 
@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by HP on 24-01-2017.
+ * Created by Shreya Prabhu on 24-01-2017.
  */
 
 public class DateUtils {
