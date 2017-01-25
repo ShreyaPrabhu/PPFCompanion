@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by HP on 25-01-2017.
+ * Created by Shreya Prabhu on 25-01-2017.
  */
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {

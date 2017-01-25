@@ -4,13 +4,10 @@ import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
-import com.example.shreyaprabhu.ppfcompanion.Activities.MainActivity;
-import com.example.shreyaprabhu.ppfcompanion.Activities.PPFReport;
 
 /**
- * Created by HP on 25-01-2017.
+ * Created by Shreya Prabhu on 25-01-2017.
  */
 
 public class TabLayoutListener {
