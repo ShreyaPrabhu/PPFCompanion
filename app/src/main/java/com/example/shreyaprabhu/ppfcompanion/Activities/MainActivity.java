@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
         day= calendar.get(Calendar.DAY_OF_MONTH);
         month = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
-        date_string = DateUtils.showDate(day,month,year);
+        date_string = DateUtils.showDate(day,month+1,year);
         date.setText(date_string);
 
         //DATE DIALOG BOX
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity
             year = selectedYear;
             month = selectedMonth;
             day = selectedDay;
-            date_string = DateUtils.showDate(day,month,year);
+            date_string = DateUtils.showDate(day,month+1,year);
             date.setText(date_string);
         }
     };

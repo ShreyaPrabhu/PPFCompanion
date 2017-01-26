@@ -27,9 +27,6 @@ public class ValidateEntry {
         return false;
     }
 
-
-
-    //check for amount
     private boolean isAmountValid(String amount) {
         if(Integer.parseInt(amount) >= 500){
             return true;
@@ -70,12 +67,18 @@ public class ValidateEntry {
     }
 
     public boolean isDateValid(int day, int month, int year){
+        Log.v("mymonth2", "month" + month);
         StringBuilder day_string = DateUtils.showDate(day,month,year);
-        if(DateUtils.isThisDateValid(day_string.toString())){
+        Log.v("mystring", "day_string" + day_string);
+        int i = DateUtils.isThisDateValid(day_string.toString());
+        if(i==2)
             return true;
+        else if(i==0){
+            CreateDialogBox.alertDialog(mContext,"Date " +day_string.toString()+ " is not valid date" );
+            return false;
         }
         else{
-            CreateDialogBox.alertDialog(mContext,"Date " +day_string.toString()+ " is not valid date" );
+            CreateDialogBox.alertDialog(mContext,"Date " +day_string.toString()+ " is not valid date! Starting month needs to be april");
             return false;
         }
 
@@ -83,6 +86,7 @@ public class ValidateEntry {
 
     public static boolean validate(Context context, String amount, String no_of_years, int day, int month, int year, String startDate) throws ParseException {
         mContext = context;
+        Log.v("mymonth", "month" + month);
         if(!validateEntry.nullCheck(amount,no_of_years,day,month,year,startDate)){
             return(validateEntry.isAmountValid(amount) && (validateEntry.isNoOfYearsValid(no_of_years))
                     && (validateEntry.isDateValid(day,month,year)) && (validateEntry.isStartDateValid(startDate)));

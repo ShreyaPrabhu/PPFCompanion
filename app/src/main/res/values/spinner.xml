@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="ppf_mode_array">
-        <item>Fixed Yearly Deposite</item>
-        <item>Fixed Monthly Deposite</item>
-        <item>Variable Yearly Deposite</item>
-        <item>Variable Monthly Deposite</item>
+        <item>Fixed Yearly Deposit</item>
+        <item>Fixed Monthly Deposit</item>
     </string-array>
 </resources>

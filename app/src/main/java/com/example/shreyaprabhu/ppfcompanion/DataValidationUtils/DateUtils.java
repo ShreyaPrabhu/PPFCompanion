@@ -17,7 +17,7 @@ public class DateUtils {
 
     public static StringBuilder showDate(int day, int month, int year) {
         StringBuilder date_string = new StringBuilder().append(day)
-                .append("-").append(month + 1).append("-").append(year)
+                .append("-").append(month).append("-").append(year)
                 .append(" ");
         return date_string;
 
@@ -25,11 +25,14 @@ public class DateUtils {
 
     //TODO : Fix code to successfully pass all the test
 
-    public static boolean isThisDateValid(String dateToValidate){
+    public static int isThisDateValid(String dateToValidate){
 
+        //0 - null or wrong date
+        //1 - wrong month
+        //2 - correct
 
         if(dateToValidate == null){
-            return false;
+            return 0;
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
@@ -39,15 +42,19 @@ public class DateUtils {
 
             //if not valid, it will throw ParseException
             Date date = sdf.parse(dateToValidate);
-            //Log.v("myTag","myValidDate " + date);
+            Log.v("myTag","myValidDate " + date);
+            int month = returnmonthfromString(dateToValidate);
+            if(month == 4){
+                return 2;
+            }
+            else
+                return 1;
 
         } catch (ParseException e) {
 
             e.printStackTrace();
-            return false;
+            return 0;
         }
-
-        return true;
     }
 
     public static boolean compareDates(String presentDate, String enteredDate) throws ParseException {
@@ -70,5 +77,21 @@ public class DateUtils {
             return true;
         }
 
+    }
+
+    public int returndayfromString(String dateString){
+        String str[] = dateString.split("-");
+        int day = Integer.parseInt(str[0]);
+        return day;
+    }
+
+    public static int returnmonthfromString(String dateString){
+        String str[] = dateString.split("-");
+        return Integer.parseInt(str[1]);
+    }
+
+    public static int returnyearfromString(String dateString){
+        String str[] = dateString.split("-");
+        return Integer.parseInt(str[2].trim());
     }
 }
