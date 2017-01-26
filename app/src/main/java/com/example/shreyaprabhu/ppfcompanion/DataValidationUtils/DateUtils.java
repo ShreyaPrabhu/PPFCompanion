@@ -15,10 +15,9 @@ public class DateUtils {
 
     final static String DATE_FORMAT = "dd-MM-yyyy";
 
-    public static StringBuilder showDate(int day, int month, int year) {
-        StringBuilder date_string = new StringBuilder().append(day)
-                .append("-").append(month).append("-").append(year)
-                .append(" ");
+    public static StringBuilder showDate(int year) {
+        StringBuilder date_string = new StringBuilder().append("1")
+                .append("-").append("4").append("-").append(year);
         return date_string;
 
     }

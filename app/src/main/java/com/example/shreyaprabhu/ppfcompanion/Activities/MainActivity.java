@@ -35,16 +35,11 @@ public class MainActivity extends AppCompatActivity
 
     EditText amount_deposited;
     EditText date;
-    EditText no_of_years;
     Button calculate;
-
-    static final int DATE_PICKER_ID = 1111;
-    private int year;
-    private int month;
-    private int day;
-    StringBuilder date_string;
-
+    Button refresh;
     String ppfmode;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity
          * Apply the adapter to the spinner
          * Then you need to specify the interface implementation by calling setOnItemSelectedListener()
          */
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.ppf_mode_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -78,44 +73,24 @@ public class MainActivity extends AppCompatActivity
 
         date = (EditText) findViewById(R.id.date);
         amount_deposited = (EditText) findViewById(R.id.amount);
-        no_of_years = (EditText) findViewById(R.id.year);
         calculate = (Button) findViewById(R.id.calculate);
+        refresh = (Button) findViewById(R.id.refresh);
 
-        //Date Picker
-        date.setText(Calendar.getInstance().toString());
         Calendar calendar = Calendar.getInstance();
-
-        //SHOW DATE
-        day= calendar.get(Calendar.DAY_OF_MONTH);
-        month = calendar.get(Calendar.MONTH);
-        year = calendar.get(Calendar.YEAR);
-        date_string = DateUtils.showDate(day,month+1,year);
-        date.setText(date_string);
-
-        //DATE DIALOG BOX
-        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(DATE_PICKER_ID);
-            }
-        });
-
+        int year = calendar.get(Calendar.YEAR);
+        date.setText(year+"");
 
         calculate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,PPFReport.class);
-
-                String no_of_year = no_of_years.getText().toString();
                 String amount = amount_deposited.getText().toString();
-
+                String startyear = date.getText().toString();
 
                 try {
-                    if(ValidateEntry.validate(MainActivity.this,amount,no_of_year,day,month+1,year,date_string.toString())){
+                    if(ValidateEntry.validate(MainActivity.this,amount,startyear)){
                             i.putExtra("amountmessage", amount);
-                            i.putExtra("noOfyearmessage",no_of_year);
-                            i.putExtra("startdatemessage",date_string.toString());
-                            i.putExtra("ppfmodemessage", ppfmode);
-                            Toast.makeText(MainActivity.this,"validated" + amount + no_of_year + date_string.toString() + ppfmode,Toast.LENGTH_LONG).show();
+                            i.putExtra("startdatemessage",startyear);
+                            i.putExtra("ppfmodemessage",ppfmode);
                             startActivity(i);
                     }
                 } catch (ParseException e) {
@@ -123,37 +98,18 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                recreate();
+                amount_deposited.setText("");
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                date.setText(year+"");
+
+            }
+        });
     }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_PICKER_ID:
-
-                // open datepicker dialog.
-                // set date picker for current date
-                // add pickerListener listner to date picker
-                return new DatePickerDialog(this, pickerListener, year, month, day);
-
-        }
-        return null;
-    }
-
-    private DatePickerDialog.OnDateSetListener pickerListener = new DatePickerDialog.OnDateSetListener() {
-
-        // when dialog box is closed, below method will be called.
-        @Override
-        public void onDateSet(DatePicker view, int selectedYear,
-                              int selectedMonth, int selectedDay) {
-
-            year = selectedYear;
-            month = selectedMonth;
-            day = selectedDay;
-            date_string = DateUtils.showDate(day,month+1,year);
-            date.setText(date_string);
-        }
-    };
-
 
 
     @Override

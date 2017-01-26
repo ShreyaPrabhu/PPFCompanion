@@ -17,8 +17,8 @@ public class ValidateEntry {
     private static Context mContext;
 
 
-    private boolean nullCheck(String amount, String no_of_years, int day, int month, int year, String startDate){
-        boolean x = TextUtils.isEmpty(amount) || TextUtils.isEmpty(no_of_years) || day==0 || month==0 || year==0 || TextUtils.isEmpty(startDate);
+    private boolean nullCheck(String amount,String year){
+        boolean x = TextUtils.isEmpty(amount) || TextUtils.isEmpty(year);
         Log.v("my","x" + x);
         if(x){
             CreateDialogBox.alertDialog(mContext,"Please enter all the details");
@@ -38,58 +38,19 @@ public class ValidateEntry {
 
     }
 
-    private boolean isNoOfYearsValid(String no_of_years){
-        if(Integer.parseInt(no_of_years) >= 15){
-            return true;
-        }
-        else{
-            CreateDialogBox.alertDialog(mContext,"No of Years should be 15 years or more");
-            return false;
-        }
 
-    }
-
-
-    private boolean isStartDateValid(String startDate) throws ParseException {
+    private boolean isStartYearValid(String startYear) throws ParseException {
         Calendar calendar = Calendar.getInstance();
-        int day= calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
-        StringBuilder date_string = DateUtils.showDate(day,month,year);
-        if(DateUtils.compareDates(date_string.toString(),startDate)){
-            return true;
-        }
-        else{
-            CreateDialogBox.alertDialog(mContext,"Start Date cannot be before present Date " + date_string.toString() );
-            return false;
-        }
-
+        return Integer.parseInt(startYear) >= year;
     }
 
-    public boolean isDateValid(int day, int month, int year){
-        Log.v("mymonth2", "month" + month);
-        StringBuilder day_string = DateUtils.showDate(day,month,year);
-        Log.v("mystring", "day_string" + day_string);
-        int i = DateUtils.isThisDateValid(day_string.toString());
-        if(i==2)
-            return true;
-        else if(i==0){
-            CreateDialogBox.alertDialog(mContext,"Date " +day_string.toString()+ " is not valid date" );
-            return false;
-        }
-        else{
-            CreateDialogBox.alertDialog(mContext,"Date " +day_string.toString()+ " is not valid date! Starting month needs to be april");
-            return false;
-        }
 
-    }
-
-    public static boolean validate(Context context, String amount, String no_of_years, int day, int month, int year, String startDate) throws ParseException {
+    public static boolean validate(Context context, String amount, String year) throws ParseException {
         mContext = context;
-        Log.v("mymonth", "month" + month);
-        if(!validateEntry.nullCheck(amount,no_of_years,day,month,year,startDate)){
-            return(validateEntry.isAmountValid(amount) && (validateEntry.isNoOfYearsValid(no_of_years))
-                    && (validateEntry.isDateValid(day,month,year)) && (validateEntry.isStartDateValid(startDate)));
+        if(!validateEntry.nullCheck(amount,year)){
+            return(validateEntry.isAmountValid(amount)
+                     && (validateEntry.isStartYearValid(year)));
 
         }
         return false;

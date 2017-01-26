@@ -26,23 +26,21 @@ public class ReportFragment extends Fragment {
 
         PPFReport ppfReport = (PPFReport)getActivity();
         String amountmessage = ppfReport.getIntent().getExtras().getString("amountmessage");
-        String noOfyearmessage = ppfReport.getIntent().getExtras().getString("noOfyearmessage");
         String startdatemessage = ppfReport.getIntent().getExtras().getString("startdatemessage");
         String ppfmodemessage = ppfReport.getIntent().getExtras().getString("ppfmodemessage");
         Log.v("myData","fragmentData" + amountmessage + " "
-                    + noOfyearmessage + " "
                     + startdatemessage + " "
                     + ppfmodemessage + " ");
 
-        setInitialvalues(amountmessage,noOfyearmessage,startdatemessage,ppfmodemessage);
+        setInitialvalues(amountmessage,startdatemessage,ppfmodemessage);
 
         View rootView = inflater.inflate(R.layout.fragment_report, container, false);
         return rootView;
     }
 
-    public void setInitialvalues(String amountmessage,String noOfyearmessage, String startdatemessage, String ppfmodemessage ){
-        StartYear = DateUtils.returnyearfromString(startdatemessage);
-        NoOfYears = Integer.parseInt(noOfyearmessage);
+    public void setInitialvalues(String amountmessage, String startdatemessage, String ppfmodemessage ){
+        StartYear = Integer.parseInt(startdatemessage);
+        NoOfYears = 15;
         AmountDeposited=Integer.parseInt(amountmessage);
         OpeningBalance = 0;
         InterestEarned =(int)(AmountDeposited*0.087);
