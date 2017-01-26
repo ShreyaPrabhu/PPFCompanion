@@ -20,10 +20,6 @@ import com.example.shreyaprabhu.ppfcompanion.R;
 public class PPFReport extends AppCompatActivity {
 
     private ViewPager mViewPager;
-    String amountmessage;
-    String noOfyearmessage;
-    String startdatemessage;
-    String ppfmodemessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

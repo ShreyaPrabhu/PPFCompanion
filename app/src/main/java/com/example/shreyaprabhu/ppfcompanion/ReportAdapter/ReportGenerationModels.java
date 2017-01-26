@@ -17,7 +17,7 @@ public class ReportGenerationModels implements Parcelable {
     private int InterestEarned;
     private int ClosingBalance;
 
-    ReportGenerationModels(int StartYear,int OpeningBalance, int AmountDeposited, int InterestEarned,int ClosingBalance){
+    public ReportGenerationModels(int StartYear,int OpeningBalance, int AmountDeposited, int InterestEarned,int ClosingBalance){
         this.StartYear = StartYear;
         this.OpeningBalance = OpeningBalance;
         this.AmountDeposited = AmountDeposited;
@@ -25,44 +25,47 @@ public class ReportGenerationModels implements Parcelable {
         this.ClosingBalance = ClosingBalance;
     }
 
+    public ReportGenerationModels(){
 
-    void setStartYear(int StartYear){
+    }
+
+    public void setStartYear(int StartYear){
         this.StartYear = StartYear;
     }
 
-    int getStartYear(){
+    public int getStartYear(){
         return StartYear;
     }
 
-    void setAmountDeposited(int AmountDeposited){
+    public void setAmountDeposited(int AmountDeposited){
         this.AmountDeposited = AmountDeposited;
     }
 
-    int getAmountDeposited(){
+    public int getAmountDeposited(){
         return AmountDeposited;
     }
 
-    void setOpeningBalance(int OpeningBalance){
+    public void setOpeningBalance(int OpeningBalance){
         this.OpeningBalance = OpeningBalance;
     }
 
-    int getOpeningBalance(){
+    public int getOpeningBalance(){
         return OpeningBalance;
     }
 
-    void setInterestEarned(int InterestEarned){
+    public void setInterestEarned(int InterestEarned){
         this.InterestEarned = InterestEarned;
     }
 
-    int getInterestEarned(){
+    public int getInterestEarned(){
         return InterestEarned;
     }
 
-    void setClosingBalance(int ClosingBalance){
+    public void setClosingBalance(int ClosingBalance){
         this.ClosingBalance = ClosingBalance;
     }
 
-    int getClosingBalance(){
+    public int getClosingBalance(){
         return ClosingBalance;
     }
 

@@ -36,6 +36,12 @@
     <string name="refresh">Refresh</string>
     <string name="no_of_years">15</string>
 
+    <!--fragment_ppfreport-->
+    <string name="maturity_year">Maturity Year : </string>
+    <string name="maturity_amount">Maturity Amount : </string>
+    <string name="amount_deposited">Total Amount Deposited : </string>
+    <string name="interest_gained">Total Interest Gained : </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
