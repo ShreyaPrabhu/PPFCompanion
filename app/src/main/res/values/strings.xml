@@ -42,6 +42,13 @@
     <string name="amount_deposited">Total Amount Deposited : </string>
     <string name="interest_gained">Total Interest Gained : </string>
 
+    <!--unit_report_item -->
+    <string name="start_year_title">REPORT FOR YEAR </string>
+    <string name="amount_deposited_title">Amount Deposited </string>
+    <string name="opening_balance_title">Opening Balance </string>
+    <string name="interest_earned_title">Interest Earned </string>
+    <string name="closing_balance_title">Closing Balance </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
