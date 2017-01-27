@@ -28,6 +28,7 @@ public class ReportFragment extends Fragment {
     private int ClosingBalance;
 
     private ArrayList<ReportGenerationModels> reportGeneration;
+    public static ArrayList<Integer>yLineValues;
     private ReportGenerationModels reportGenerationModels;
     private ReportGenerationAdapter reportGenerationAdapter;
     private RecyclerView recyclerView;
@@ -42,6 +43,8 @@ public class ReportFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_ppfreport, container, false);
+
+        yLineValues = new ArrayList<>();
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         maturity_year = (TextView) rootView.findViewById(R.id.maturity_year_value);
@@ -73,7 +76,7 @@ public class ReportFragment extends Fragment {
             fixedMonthlyAmountppfCalc(StartYear, ClosingBalance);
         }
 
-
+        //LineGraphFragment.setYArrayList(yLineValues);
 
         return rootView;
     }
@@ -88,6 +91,7 @@ public class ReportFragment extends Fragment {
         InterestEarned =(int)(AmountDeposited*0.081);
         totalInterest += InterestEarned;
         ClosingBalance = AmountDeposited+InterestEarned;
+        yLineValues.add(ClosingBalance);
 
         reportGenerationModels = new ReportGenerationModels();
         reportGenerationModels.setStartYear(StartYear);
@@ -109,6 +113,7 @@ public class ReportFragment extends Fragment {
         InterestEarned = getCompoundedInterestforOneYear(AmountDeposited,AmountDeposited);
         totalInterest += InterestEarned;
         ClosingBalance = (AmountDeposited*12)+InterestEarned;
+        yLineValues.add(ClosingBalance);
 
         reportGenerationModels = new ReportGenerationModels();
         reportGenerationModels.setStartYear(StartYear);
@@ -159,6 +164,7 @@ public class ReportFragment extends Fragment {
             reportModels.setInterestEarned(interest);
 
             CBalance += (AmountDeposited*12) + interest;
+            yLineValues.add(CBalance);
             reportModels.setClosingBalance(CBalance);
 
             reportGeneration.add(reportModels);
@@ -203,6 +209,7 @@ public class ReportFragment extends Fragment {
             reportModels.setInterestEarned(interest);
 
             CBalance = intermediateResult + interest;
+            yLineValues.add(CBalance);
             reportModels.setClosingBalance(CBalance);
 
             reportGeneration.add(reportModels);
@@ -221,6 +228,4 @@ public class ReportFragment extends Fragment {
         interest_gained.setText(String.valueOf(totalInterest));
 
     }
-
-
 }

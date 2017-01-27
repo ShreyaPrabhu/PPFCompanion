@@ -93,8 +93,8 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="75dp"
-            android:background="#e0e0e0"
+            android:layout_marginBottom="@dimen/recycler_margin"
+            android:background="@color/recyclerview_background"
             >
 
         </android.support.v7.widget.RecyclerView>

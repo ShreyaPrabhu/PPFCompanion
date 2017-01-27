@@ -9,4 +9,6 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="margin">10dp</dimen>
     <dimen name="tiny_margin">3dp</dimen>
+    <dimen name="my_graph_height">425dp</dimen>
+    <dimen name="recycler_margin">75dp</dimen>
 </resources>

@@ -8,4 +8,6 @@
     <color name="centercolor">#f39c12</color>
     <color name="endcolor">#ff5722</color>
     <color name="startcolor">#f1c40f</color>
+
+    <color name="recyclerview_background">#e0e0e0</color>
 </resources>

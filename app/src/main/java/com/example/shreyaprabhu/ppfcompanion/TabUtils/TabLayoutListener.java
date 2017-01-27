@@ -22,16 +22,10 @@ public class TabLayoutListener {
                 viewPager.setCurrentItem(tab.getPosition());
                 switch (tab.getPosition()) {
                     case 0:
-                        Snackbar.make(viewPager, "REPORT", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
                         break;
                     case 1:
-                        Snackbar.make(viewPager, "LINE GRAPH", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
                         break;
                     case 2:
-                        Snackbar.make(viewPager, "PIE CHART", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
                         break;
                 }
             }
