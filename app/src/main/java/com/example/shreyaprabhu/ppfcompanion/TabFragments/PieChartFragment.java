@@ -7,6 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shreyaprabhu.ppfcompanion.R;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 public class PieChartFragment extends Fragment {
     @Override
@@ -14,6 +21,25 @@ public class PieChartFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_pie_chart, container, false);
+
+        PieChart pieChart = (PieChart)rootView.findViewById(R.id.chart);
+        pieChart.animateY(5000);
+        // creating data values
+        ArrayList<Entry> entries = new ArrayList();
+        entries.add(new Entry(ReportFragment.toPieAmountDeposited, 0));
+        entries.add(new Entry(ReportFragment.toPieInterest, 1));
+
+        PieDataSet dataset = new PieDataSet(entries," ");
+        dataset.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("Total Amount Deposit");
+        labels.add("Total Interest Gained");
+
+        PieData data = new PieData(labels, dataset);
+        pieChart.setData(data);
+        pieChart.setDescription("Amount Deposited vs Interest gained at Maturity");
+
 
         return rootView;
     }

@@ -20,12 +20,14 @@ import java.util.ArrayList;
 
 public class ReportFragment extends Fragment {
     private int StartYear;
+    public static int toPieInterest;
+    public static int toPieAmountDeposited;
     private int NoOfYears;
     private int OpeningBalance;
     private int AmountDeposited;
-    private int totalInterest = 0;
+    public int totalInterest = 0;
     private int InterestEarned;
-    private int ClosingBalance;
+    public int ClosingBalance;
 
     private ArrayList<ReportGenerationModels> reportGeneration;
     public static ArrayList<Integer>yLineValues;
@@ -181,6 +183,8 @@ public class ReportFragment extends Fragment {
         maturity_amount.setText(String.valueOf(CBalance));
         amount_deposited.setText(String.valueOf(AmountDeposited*15*12));
         interest_gained.setText(String.valueOf(totalInterest));
+        toPieInterest = totalInterest;
+        toPieAmountDeposited = AmountDeposited*15*12;
 
     }
 
@@ -221,11 +225,13 @@ public class ReportFragment extends Fragment {
 
             i++;
         }
+        ClosingBalance = CBalance;
         reportGenerationAdapter.notifyDataSetChanged();
         maturity_year.setText(String.valueOf(StartYear+NoOfYears));
-        maturity_amount.setText(String.valueOf(CBalance));
+        maturity_amount.setText(String.valueOf(ClosingBalance));
         amount_deposited.setText(String.valueOf(AmountDeposited*15));
         interest_gained.setText(String.valueOf(totalInterest));
-
+        toPieInterest = totalInterest;
+        toPieAmountDeposited = AmountDeposited*15;
     }
 }

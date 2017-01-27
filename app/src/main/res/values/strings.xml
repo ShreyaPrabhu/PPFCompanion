@@ -23,7 +23,7 @@
 
     <!--content_main -->
     <string name="mode">Select a PPF Plan</string>
-    <string name="amount_deposite">Amount Deposite(\u20B9)</string>
+    <string name="amount_deposite">Amount Deposit(\u20B9)</string>
     <string name="amount_hint">Amount >= 500</string>
     <string name="rate_of_interest">Rate of Interest(%)</string>
     <string name="interest">8.10</string>
