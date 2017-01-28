@@ -1,16 +1,29 @@
 package com.example.shreyaprabhu.ppfcompanion.TabFragments;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.shreyaprabhu.ppfcompanion.Activities.MyPlan;
 import com.example.shreyaprabhu.ppfcompanion.Activities.PPFReport;
+import com.example.shreyaprabhu.ppfcompanion.Data.DataContentProvider;
+import com.example.shreyaprabhu.ppfcompanion.Data.DataContract;
 import com.example.shreyaprabhu.ppfcompanion.R;
 import com.example.shreyaprabhu.ppfcompanion.ReportAdapter.ReportGenerationAdapter;
 import com.example.shreyaprabhu.ppfcompanion.ReportAdapter.ReportGenerationModels;
@@ -28,6 +41,7 @@ public class ReportFragment extends Fragment {
     public int totalInterest = 0;
     private int InterestEarned;
     public int ClosingBalance;
+    String ppfmodemessage;
 
     private ArrayList<ReportGenerationModels> reportGeneration;
     public static ArrayList<Integer>yLineValues;
@@ -38,7 +52,7 @@ public class ReportFragment extends Fragment {
     TextView maturity_amount;
     TextView amount_deposited;
     TextView interest_gained;
-
+    Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,11 +67,12 @@ public class ReportFragment extends Fragment {
         maturity_amount = (TextView) rootView.findViewById(R.id.maturity_amount_value);
         amount_deposited = (TextView) rootView.findViewById(R.id.amount_deposited_value);
         interest_gained = (TextView) rootView.findViewById(R.id.interest_gained_value);
+        button = (Button) rootView.findViewById(R.id.button2);
 
         PPFReport ppfReport = (PPFReport)getActivity();
         String amountmessage = ppfReport.getIntent().getExtras().getString("amountmessage");
         String startdatemessage = ppfReport.getIntent().getExtras().getString("startdatemessage");
-        String ppfmodemessage = ppfReport.getIntent().getExtras().getString("ppfmodemessage");
+        ppfmodemessage = ppfReport.getIntent().getExtras().getString("ppfmodemessage");
         Log.v("myData","fragmentData" + amountmessage + " "
                     + startdatemessage + " "
                     + ppfmodemessage + " ");
@@ -78,7 +93,13 @@ public class ReportFragment extends Fragment {
             fixedMonthlyAmountppfCalc(StartYear, ClosingBalance);
         }
 
-        //LineGraphFragment.setYArrayList(yLineValues);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickAdd();
+
+            }
+        });
 
         return rootView;
     }
@@ -234,4 +255,26 @@ public class ReportFragment extends Fragment {
         toPieInterest = totalInterest;
         toPieAmountDeposited = AmountDeposited*15;
     }
+
+
+    public void onClickAdd() {
+        // Add a new student record
+        ContentValues values = new ContentValues();
+        values.put(DataContract.PPFEntry.COLUMN_STARTYEAR, StartYear);
+        values.put(DataContract.PPFEntry.COLUMN_PPF_MODE, ppfmodemessage);
+        values.put(DataContract.PPFEntry.COLUMN_AMOUNT_DEPOSITED,AmountDeposited);
+        values.put(DataContract.PPFEntry.COLUMN_MATURITY_YEAR,maturity_year.getText().toString());
+        values.put(DataContract.PPFEntry.COLUMN_MATURITY_AMOUNT,maturity_amount.getText().toString());
+        values.put(DataContract.PPFEntry.COLUMN_TOTAL_AMOUNT_DEPOSITED,toPieAmountDeposited);
+        values.put(DataContract.PPFEntry.COLUMN_TOTAL_INTEREST_GAINED,toPieInterest);
+
+        Uri uri = getContext().getContentResolver().insert(
+                   DataContract.PPFEntry.CONTENT_URI, values);
+
+        assert uri != null;
+        Toast.makeText(getContext(),
+                uri.toString(), Toast.LENGTH_LONG).show();
+    }
+
+
 }

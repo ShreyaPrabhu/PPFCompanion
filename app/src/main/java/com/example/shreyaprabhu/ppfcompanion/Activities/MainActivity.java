@@ -151,6 +151,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_myPlans) {
+            Intent intent =new Intent(this,MyPlan.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_calculator) {
 

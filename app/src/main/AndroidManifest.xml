@@ -21,7 +21,16 @@
         <activity
             android:name=".Activities.PPFReport"
             android:label="@string/title_activity_ppfreport"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.MyPlan"
+            android:label="@string/title_activity_my_plan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <provider
+            android:authorities="com.example.shreyaprabhu.ppfcompanion"
+            android:name=".Data.DataContentProvider" >
+        </provider>
     </application>
 
 </manifest>

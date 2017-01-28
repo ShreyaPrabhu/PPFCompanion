@@ -1,5 +1,7 @@
 package com.example.shreyaprabhu.ppfcompanion.Activities;
 
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,8 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
+import com.example.shreyaprabhu.ppfcompanion.ReportAdapter.ReportGenerationModels;
 import com.example.shreyaprabhu.ppfcompanion.TabFragments.LineGraphFragment;
 import com.example.shreyaprabhu.ppfcompanion.TabFragments.PieChartFragment;
 import com.example.shreyaprabhu.ppfcompanion.TabFragments.ReportFragment;
@@ -29,6 +33,7 @@ public class PPFReport extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
 
@@ -39,7 +44,7 @@ public class PPFReport extends AppCompatActivity {
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(final ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new ReportFragment(),"REPORT");
         adapter.addFrag(new LineGraphFragment(),"LINE GRAPH");

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 
 /**
@@ -14,7 +15,7 @@ public class TabLayoutListener {
 
     static Context mContext;
 
-    public static void tabListener(Context context, TabLayout tabLayout, final ViewPager viewPager) {
+    public static void tabListener(final Context context, TabLayout tabLayout, final ViewPager viewPager) {
         mContext = context;
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
