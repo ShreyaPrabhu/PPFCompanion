@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import static com.example.shreyaprabhu.ppfcompanion.Data.DataContract.PPFEntry.CONTENT_URI;
 
@@ -32,7 +33,7 @@ public class DataContentProvider extends ContentProvider {
         final String authority = DataContract.CONTENT_AUTHORITY;
 
         matcher.addURI(authority,DataContract.PATH_PPFDATA,PLANS);
-        matcher.addURI(authority, DataContract.PATH_PPFDATA,PLAN_ID);
+        matcher.addURI(authority, DataContract.PATH_PPFDATA + "/#",PLAN_ID);
 
         return matcher;
     }
@@ -102,12 +103,11 @@ public class DataContentProvider extends ContentProvider {
                 break;
 
             case PLAN_ID:
-                String id = uri.getPathSegments().get(1);
+                String id = uri.getLastPathSegment();
+                Log.v("myId", "id " + id);
                 numRowsDeleted = mOpenHelper.getWritableDatabase().delete(
                         DataContract.PPFEntry.TABLE_NAME,
-                        DataContract.PPFEntry.COLUMN_PLAN_ID +  " = " + id +
-                                (!TextUtils.isEmpty(selection) ?
-                                        " AND (" + selection + ')' : ""), selectionArgs);
+                        DataContract.PPFEntry.COLUMN_PLAN_ID +  " = " + id,selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);

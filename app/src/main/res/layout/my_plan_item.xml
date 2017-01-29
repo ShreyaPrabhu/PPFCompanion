@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/margin">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/MyCardViewStyle">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:id="@+id/MyPlanTitle"
+                    android:text="@string/my_plan_title"
+                    android:layout_height="30dp"
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:id="@+id/MyPlan"
+                    android:layout_height="30dp"
+                    android:layout_width="wrap_content" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"
+                android:layout_marginBottom="@dimen/margin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/StartYearTitle"
+                    android:text="@string/start_year_title_my_plan"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp" />
+
+                <TextView
+                    android:id="@+id/StartYear"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"
+                     />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/PpfModeMessageTitle"
+                    android:text="@string/ppf_mode_title"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp" />
+
+                <TextView
+                    android:id="@+id/PpfModeMessage"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/AmountDepositedTitle"
+                    android:text="@string/amount_deposited_title"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+                <TextView
+                    android:id="@+id/AmountDeposited"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/MaturityYearTitle"
+                    android:text="@string/maturity_year"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+                <TextView
+                    android:id="@+id/MaturityYear"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/MaturityAmountTitle"
+                    android:text="@string/maturity_amount"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+                <TextView
+                    android:id="@+id/MaturityAmount"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/TotalAmountDepositedTitle"
+                    android:text="@string/amount_deposited"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+                <TextView
+                    android:id="@+id/TotalAmountDeposited"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin">
+
+                <TextView
+                    android:id="@+id/TotalInterestGainedTitle"
+                    android:text="@string/interest_gained"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+                <TextView
+                    android:id="@+id/TotalInterestGained"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tiny_margin"
+                android:layout_gravity="right">
+
+                <TextView
+                    android:id="@+id/Delete"
+                    android:text="@string/delete_my_plan"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.00"
+                    android:layout_width="0dp"
+                    android:textColor="@color/endcolor"
+                    />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
