@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.example.shreyaprabhu.ppfcompanion.Activities.MyPlan;
 import com.example.shreyaprabhu.ppfcompanion.Data.DataContract;
 import com.example.shreyaprabhu.ppfcompanion.R;
 
@@ -24,18 +22,19 @@ public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHol
 
     Context context;
     ArrayList<MyPlanModels> myPlan = new ArrayList<>();
-
+    MyPlanAdapter myPlanAdapter;
 
     public MyPlanAdapter(Context context, ArrayList<MyPlanModels> myPlan) {
         super();
         this.context = context;
         this.myPlan = myPlan;
+        this.myPlanAdapter = this;
     }
 
     @Override
     public MyPlanAdapter.RowViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_plan_item, parent, false); //change xml file
+                .inflate(R.layout.my_plan_item, parent, false);
         return new RowViewHolder(view);
     }
 
@@ -54,10 +53,11 @@ public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHol
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Uri uri = DataContract.PPFEntry.buildPPfDataUriWithPlanID(myPlanModels.getId());
-                        ContentResolver cr = context.getContentResolver();
-                        cr.delete(uri,null,null);
-                        notifyDataSetChanged();
+                            Uri uri = DataContract.PPFEntry.buildPPfDataUriWithPlanID(myPlanModels.getId());
+                            ContentResolver cr = context.getContentResolver();
+                            cr.delete(uri,null,null);
+                            myPlan.remove(position);
+                            myPlanAdapter.notifyDataSetChanged();
 
                     }
                 }
@@ -65,6 +65,7 @@ public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHol
         );
 
     }
+
 
     @Override
     public int getItemCount() {

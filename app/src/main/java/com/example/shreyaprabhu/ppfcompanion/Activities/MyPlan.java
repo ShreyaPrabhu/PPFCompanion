@@ -33,8 +33,6 @@ public class MyPlan extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        refresh = (Button) findViewById(R.id.my_plan_refresh);
-
         my_plan_recyclerView= (RecyclerView) findViewById(R.id.my_plan_recyclerview);
 
         myPlan = new ArrayList<>();
@@ -43,13 +41,6 @@ public class MyPlan extends AppCompatActivity {
         my_plan_recyclerView.setAdapter(myPlanAdapter);
 
         onClickRetrieveStudents();
-
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recreate();
-            }
-        });
     }
 
     public void onClickRetrieveStudents() {

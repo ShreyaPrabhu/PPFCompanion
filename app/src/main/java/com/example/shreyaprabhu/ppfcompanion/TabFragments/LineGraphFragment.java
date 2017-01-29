@@ -2,6 +2,7 @@ package com.example.shreyaprabhu.ppfcompanion.TabFragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,23 +41,17 @@ public class LineGraphFragment extends Fragment implements
         View rootView = inflater.inflate(R.layout.fragment_line_graph, container, false);
         yarrayList = new ArrayList<>();
 
-
         mChart = (LineChart) rootView.findViewById(R.id.linechart);
         mChart.setTouchEnabled(true);
-        mChart.setDescription("Closing Amount over Time");
+        mChart.setDescription("Closing Amount over Time                         ");
         mChart.setNoDataTextDescription("You need to provide data for the chart.");
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(true);
         mChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
 
         setData();
-        // get the legend (only possible after setting data)
         Legend l = mChart.getLegend();
-
-        // modify the legend ...
-        // l.setPosition(LegendPosition.LEFT_OF_CHART);
         l.setForm(Legend.LegendForm.LINE);
-
 
         return rootView;
     }
@@ -165,14 +160,9 @@ public class LineGraphFragment extends Fragment implements
 
         LineDataSet set1;
 
-        // create a dataset and give it a type
         set1 = new LineDataSet(yVals, "DataSet 1");
         set1.setFillAlpha(110);
-        // set1.setFillColor(Color.RED);
 
-        // set the line to be drawn like this "- - - - - -"
-        // set1.enableDashedLine(10f, 5f, 0f);
-        // set1.enableDashedHighlightLine(10f, 5f, 0f);
         set1.setColor(Color.BLACK);
         set1.setCircleColor(Color.BLACK);
         set1.setLineWidth(1f);
@@ -182,12 +172,10 @@ public class LineGraphFragment extends Fragment implements
         set1.setDrawFilled(true);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-        dataSets.add(set1); // add the datasets
+        dataSets.add(set1);
 
-        // create a data object with the datasets
         LineData data = new LineData(xVals, dataSets);
 
-        // set data
         mChart.setData(data);
 
     }

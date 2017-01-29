@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -67,7 +68,7 @@ public class ReportFragment extends Fragment {
         maturity_amount = (TextView) rootView.findViewById(R.id.maturity_amount_value);
         amount_deposited = (TextView) rootView.findViewById(R.id.amount_deposited_value);
         interest_gained = (TextView) rootView.findViewById(R.id.interest_gained_value);
-        button = (Button) rootView.findViewById(R.id.button2);
+
 
         PPFReport ppfReport = (PPFReport)getActivity();
         String amountmessage = ppfReport.getIntent().getExtras().getString("amountmessage");
@@ -93,11 +94,12 @@ public class ReportFragment extends Fragment {
             fixedMonthlyAmountppfCalc(StartYear, ClosingBalance);
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickAdd();
-
+               onClickAdd();
             }
         });
 

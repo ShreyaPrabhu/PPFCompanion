@@ -24,18 +24,4 @@
     <include layout="@layout/content_my_plan"
         android:id="@+id/include" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="@dimen/activity_horizontal_margin">
-        <Button
-            android:text="@string/refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/my_plan_refresh" />
-
-
-    </LinearLayout>
-
 </android.support.design.widget.CoordinatorLayout>

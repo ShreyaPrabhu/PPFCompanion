@@ -55,6 +55,10 @@
     <string name="ppf_mode_title">PPF Mode : </string>
     <string name="delete_my_plan">DELETE</string>
 
+    <!--my_dialog -->
+    <string name="Yes">YES</string>
+    <string name="No">NO</string>
+
 
     <string name="title_activity_my_plan">MyPlan</string>
 </resources>

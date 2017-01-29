@@ -1,10 +1,13 @@
 package com.example.shreyaprabhu.ppfcompanion.TabUtils;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import com.example.shreyaprabhu.ppfcompanion.R;
 
 
 /**
@@ -23,6 +26,7 @@ public class TabLayoutListener {
                 viewPager.setCurrentItem(tab.getPosition());
                 switch (tab.getPosition()) {
                     case 0:
+
                         break;
                     case 1:
                         break;

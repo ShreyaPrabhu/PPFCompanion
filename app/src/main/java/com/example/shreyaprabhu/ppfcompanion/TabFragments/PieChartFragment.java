@@ -1,6 +1,7 @@
 package com.example.shreyaprabhu.ppfcompanion.TabFragments;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class PieChartFragment extends Fragment {
 
         PieData data = new PieData(labels, dataset);
         pieChart.setData(data);
-        pieChart.setDescription("Amount Deposited vs Interest gained at Maturity");
+        pieChart.setDescription("Amount Deposited vs Interest gained at Maturity                            ");
 
 
         return rootView;
