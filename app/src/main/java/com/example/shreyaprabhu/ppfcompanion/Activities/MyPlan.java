@@ -40,11 +40,11 @@ public class MyPlan extends AppCompatActivity {
         my_plan_recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         my_plan_recyclerView.setAdapter(myPlanAdapter);
 
-        onClickRetrieveStudents();
+        onClickRetrieve();
     }
 
-    public void onClickRetrieveStudents() {
-        // Retrieve student records
+    public void onClickRetrieve() {
+
         String URL = "content://com.example.shreyaprabhu.ppfcompanion";
 
         Uri plans = Uri.parse(URL);

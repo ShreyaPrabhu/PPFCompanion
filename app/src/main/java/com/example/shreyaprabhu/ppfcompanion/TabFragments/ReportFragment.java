@@ -259,7 +259,7 @@ public class ReportFragment extends Fragment {
 
 
     public void onClickAdd() {
-        // Add a new student record
+
         ContentValues values = new ContentValues();
         values.put(DataContract.PPFEntry.COLUMN_STARTYEAR, StartYear);
         values.put(DataContract.PPFEntry.COLUMN_PPF_MODE, ppfmodemessage);

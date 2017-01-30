@@ -1,7 +1,6 @@
 package com.example.shreyaprabhu.ppfcompanion.Activities;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -16,14 +15,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.shreyaprabhu.ppfcompanion.R;
-import com.example.shreyaprabhu.ppfcompanion.TabFragments.ReportFragment;
-import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.DateUtils;
 import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.ValidateEntry;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;

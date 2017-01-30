@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="4dp">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/MyPlanTitle"
+                android:text="@string/my_plan_title"
+                android:layout_height="30dp"
+                android:layout_width="75dp"
+                android:textSize="@dimen/title_text_size"/>
+
+            <TextView
+                android:id="@+id/MyPlan"
+                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/title_text_size"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/tiny_margin">
+
+            <TextView
+                android:id="@+id/StartYearTitle"
+                android:text="@string/start_year_title_my_plan"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp" />
+
+            <TextView
+                android:id="@+id/StartYear"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/tiny_margin">
+
+            <TextView
+                android:id="@+id/PpfModeMessageTitle"
+                android:text="@string/ppf_mode_title"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp" />
+
+            <TextView
+                android:id="@+id/PpfModeMessage"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/tiny_margin">
+
+            <TextView
+                android:id="@+id/MaturityYearTitle"
+                android:text="@string/maturity_year"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp"/>
+
+            <TextView
+                android:id="@+id/MaturityYear"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/tiny_margin">
+
+            <TextView
+                android:id="@+id/MaturityAmountTitle"
+                android:text="@string/maturity_amount"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp"/>
+
+            <TextView
+                android:id="@+id/MaturityAmount"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.00"
+                android:layout_width="0dp"/>
+
+        </LinearLayout>
+        </LinearLayout>
+</LinearLayout>
