@@ -60,5 +60,8 @@
     <string name="No">NO</string>
 
 
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <!--dummy  -->
+
     <string name="title_activity_my_plan">MyPlan</string>
 </resources>

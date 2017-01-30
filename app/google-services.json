@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "885846361465",
+    "firebase_url": "https://ppfcompanion-57348.firebaseio.com",
+    "project_id": "ppfcompanion-57348",
+    "storage_bucket": "ppfcompanion-57348.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885846361465:android:d1208847acd46e04",
+        "android_client_info": {
+          "package_name": "com.example.shreyaprabhu.ppfcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885846361465-7lp70hvth1dj324n82egs0s488cqqi56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4ZoAu_w0D74Cn0FxyEYKtsjZ9dFWiAJg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

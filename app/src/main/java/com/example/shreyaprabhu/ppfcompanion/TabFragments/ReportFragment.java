@@ -53,7 +53,6 @@ public class ReportFragment extends Fragment {
     TextView maturity_amount;
     TextView amount_deposited;
     TextView interest_gained;
-    Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -25,6 +25,9 @@ import com.example.shreyaprabhu.ppfcompanion.R;
 import com.example.shreyaprabhu.ppfcompanion.TabFragments.ReportFragment;
 import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.DateUtils;
 import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.ValidateEntry;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -56,6 +59,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544/6300978111");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        //ca-app-pub-3940256099942544~3347511713
 
         /** Spinner Adapter Initialisation
          * Create an ArrayAdapter using the string array and a default spinner layout
