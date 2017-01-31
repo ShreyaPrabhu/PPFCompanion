@@ -170,10 +170,18 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_calculator) {
 
         } else if (id == R.id.nav_details) {
-
+            Intent i = new Intent(MainActivity.this,AboutPPF.class);
+            startActivity(i);
         }  else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_rate) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "PPFCompanion - \n" +
+                    "PPF (Public Provident Fund) calculator for the people of India." +
+                    " App provides reports and graphs based on type of PPF mode and amount being deposited. ";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "PPFCompanion");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share "));
 
         }
 

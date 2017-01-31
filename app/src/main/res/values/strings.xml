@@ -65,4 +65,48 @@
     <string name="widget_title">PPFCompanion</string>
 
     <string name="title_activity_my_plan">MyPlan</string>
+
+    <!--about_ppf-->
+    <string name="FAQ"> FREQUENTLY ASKED QUESTIONS</string>
+    <string name="Query1">Who can apply under PPF scheme?</string>
+    <string name="Query2">What is the Limit of Subscription to a PPF account? </string>
+    <string name="Query3">How many subscriptions are permitted in a financial year? </string>
+    <string name="Query4">What is the Rate of Interest under PPF? </string>
+    <string name="Query5">Is nominations facility available under the scheme ?</string>
+    <string name="Query6">When does a PPF account mature?</string>
+    <string name="Query7">Is Partial Withdrawal account from the PPF account?</string>
+    <string name="Query8">Can a PPF account continue with Deposits after Maturity? </string>
+    <string name="Query9">When and what is the loan amount that can be availed? </string>
+    <string name="Query10">Can a PPF account be transferred from one individual to another? </string>
+
+
+    <string name="Answer1">An individual (Resident of India) can open a PPF account on his / her own behalf and / or on behalf of a
+        minor of whom he is the guardian. An individual can open only one PPF account on his/ her own behalf.</string>
+    <string name="Answer2">An individual on his / her own behalf and on behalf of a minor of whom he is the guardian can
+        subscribe an amount (in integral multiples of ` 5/-) not less than 500/- and not more than ` 1,00,000/-,
+        in a financial year.</string>
+    <string name="Answer3">The subscription into an account can be made in a single lump sum or in installments
+        not exceeding twelve in a financial year. </string>
+    <string name="Answer4">Interest rate is notified by the Central Government in official gazette from time to time and
+        is currently notified at 8.1% p.a.</string>
+    <string name="Answer5">The PPF Scheme facilitates nominations of one or more persons to receive the
+        amount standing to the subscriber’s credit in case of death. However no
+        nomination(s) is possible in case of minor account.</string>
+    <string name="Answer6">A subscriber can withdraw the entire balance standing to his / her credit after
+        the expiry of fifteen years from the end of the financial year in which the initial
+        subscription is made.</string>
+    <string name="Answer7">Anytime after the expiry of five years from the end of the financial year in
+        which the initial subscription is made, the subscriber can partially withdraw but not
+        more than fifty percent (50%) from the balance Only one withdrawal is allowed per financial year. </string>
+    <string name="Answer8">A subscriber may, after maturity of his / her PPF Account, exercise an option
+        to subscribe for a further block periods of 5 years, subject to the prescribed limits of
+        subscription. This option has to be exercised by the subscriber before the end of the
+        first financial year after maturity.</string>
+    <string name="Answer9">A subscriber can avail a loan on his / her PPF deposit any time after the expiry
+        of one year from the end of the financial year in which the initial subscription was
+        made but before the expiry of five years from the end of the financial year in which
+        the initial subscription was made.</string>
+    <string name="Answer10">A PPF a/c. is not transferable from one individual to another, as such the
+        nominee cannot continue the account of a deceased subscriber in his own name.</string>
+
 </resources>

@@ -36,19 +36,18 @@
         <activity
             android:name=".Activities.MyPlan"
             android:label="@string/title_activity_my_plan"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
-            android:authorities="com.example.shreyaprabhu.ppfcompanion"
             android:name=".Data.DataContentProvider"
-            android:grantUriPermissions="true"
-            android:exported="true">
-        </provider>
+            android:authorities="com.example.shreyaprabhu.ppfcompanion"
+            android:exported="true"
+            android:grantUriPermissions="true"></provider>
 
         <service
             android:name=".Widget.WidgetService"
-            android:grantUriPermissions="true"
             android:exported="true"
+            android:grantUriPermissions="true"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver android:name=".Widget.WidgetProvider">
@@ -61,6 +60,7 @@
                 android:resource="@xml/my_stock_widget_info" />
         </receiver>
 
+        <activity android:name=".Activities.AboutPPF"></activity>
     </application>
 
 </manifest>
