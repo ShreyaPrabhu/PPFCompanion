@@ -23,7 +23,8 @@ import com.example.shreyaprabhu.ppfcompanion.R;
 import com.example.shreyaprabhu.ppfcompanion.DataValidationUtils.ValidateEntry;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity
     Button refresh;
     String ppfmode;
 
-
+    private FirebaseAnalytics mFirebaseAnalytics;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +58,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544/6300978111");
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        //ca-app-pub-3940256099942544~3347511713
 
         /** Spinner Adapter Initialisation
          * Create an ArrayAdapter using the string array and a default spinner layout
@@ -87,6 +90,11 @@ public class MainActivity extends AppCompatActivity
 
         calculate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Calculate");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Calculate");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Button");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
                 Intent i = new Intent(MainActivity.this,PPFReport.class);
                 String amount = amount_deposited.getText().toString();
                 String startyear = date.getText().toString();
