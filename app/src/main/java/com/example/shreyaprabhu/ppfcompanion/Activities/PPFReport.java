@@ -71,8 +71,9 @@ public class PPFReport extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.my_plans) {
+            Intent intent = new Intent(this,MyPlan.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
