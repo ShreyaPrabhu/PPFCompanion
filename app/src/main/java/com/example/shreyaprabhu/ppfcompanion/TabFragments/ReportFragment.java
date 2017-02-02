@@ -40,7 +40,7 @@ public class ReportFragment extends Fragment {
     private int OpeningBalance;
     private int AmountDeposited;
     public int totalInterest = 0;
-    private int InterestEarned;
+    private int InterestEarned =0;
     public int ClosingBalance;
     String ppfmodemessage;
 
@@ -108,12 +108,14 @@ public class ReportFragment extends Fragment {
 
 
     public void setInitialvaluesforfixedYearAmount(String amountmessage, String startdatemessage){
+        totalInterest = 0;
         StartYear = Integer.parseInt(startdatemessage);
         NoOfYears = 15;
         AmountDeposited=Integer.parseInt(amountmessage);
         OpeningBalance = 0;
         InterestEarned =(int)(AmountDeposited*0.081);
         totalInterest += InterestEarned;
+        Log.v("myInterest1","totalInterest"+totalInterest);
         ClosingBalance = AmountDeposited+InterestEarned;
         yLineValues.add(ClosingBalance);
 
@@ -232,6 +234,7 @@ public class ReportFragment extends Fragment {
             intermediateResult = (CBalance + AmountDeposited);
             interest = (int)(intermediateResult* 0.081);
             totalInterest += interest;
+            Log.v("myInterest2","totalInterest"+totalInterest);
             reportModels.setInterestEarned(interest);
 
             CBalance = intermediateResult + interest;
@@ -253,6 +256,7 @@ public class ReportFragment extends Fragment {
         maturity_amount.setText(String.valueOf(ClosingBalance));
         amount_deposited.setText(String.valueOf(AmountDeposited*15));
         interest_gained.setText(String.valueOf(totalInterest));
+        Log.v("myInterest3","totalInterest"+totalInterest);
         toPieInterest = totalInterest;
         toPieAmountDeposited = AmountDeposited*15;
     }
