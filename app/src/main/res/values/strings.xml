@@ -58,6 +58,8 @@
     <!--my_dialog -->
     <string name="Yes">YES</string>
     <string name="No">NO</string>
+    <string name="AlertDialogTitle">ALERT </string>
+    <string name="AlertDialogText">Are you sure you want to delete the plan? </string>
 
     <!--dummy  -->
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>

@@ -28,7 +28,7 @@ public class MyPlan extends AppCompatActivity implements
     private ArrayList<MyPlanModels> myPlan;
     private MyPlanAdapter myPlanAdapter;
     private RecyclerView my_plan_recyclerView;
-    private static final int ID_FORECAST_LOADER = 44;
+    private static final int ID_PLAN_LOADER = 44;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class MyPlan extends AppCompatActivity implements
         my_plan_recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         my_plan_recyclerView.setAdapter(myPlanAdapter);
 
-        getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
+        getSupportLoaderManager().initLoader(ID_PLAN_LOADER, null, this);
     }
 
 

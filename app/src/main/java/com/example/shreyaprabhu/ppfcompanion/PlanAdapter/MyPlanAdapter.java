@@ -1,5 +1,6 @@
 package com.example.shreyaprabhu.ppfcompanion.PlanAdapter;
 
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import com.example.shreyaprabhu.ppfcompanion.Data.DataContract;
 import com.example.shreyaprabhu.ppfcompanion.R;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
  * Created by Shreya Prabhu on 29-01-2017.
  */
 
-public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHolder>{
+public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHolder> {
 
     Context context;
     ArrayList<MyPlanModels> myPlan = new ArrayList<>();
@@ -53,12 +55,7 @@ public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHol
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                            Uri uri = DataContract.PPFEntry.buildPPfDataUriWithPlanID(myPlanModels.getId());
-                            ContentResolver cr = context.getContentResolver();
-                            cr.delete(uri,null,null);
-                            myPlan.remove(position);
-                            myPlanAdapter.notifyDataSetChanged();
-
+                        createDialog(position,myPlanModels);
                     }
                 }
 
@@ -97,5 +94,33 @@ public class MyPlanAdapter extends RecyclerView.Adapter<MyPlanAdapter.RowViewHol
 
 
         }
+    }
+
+    public void createDialog(final int position, final MyPlanModels myPlanModels) {
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.my_dialog);
+        TextView Yes = (TextView) dialog.findViewById(R.id.Yes);
+        TextView No = (TextView) dialog.findViewById(R.id.No);
+        Yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = DataContract.PPFEntry.buildPPfDataUriWithPlanID(myPlanModels.getId());
+                ContentResolver cr = context.getContentResolver();
+                cr.delete(uri, null, null);
+                myPlan.remove(position);
+                myPlanAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+        });
+
+        No.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
     }
 }

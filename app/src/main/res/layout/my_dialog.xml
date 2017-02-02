@@ -19,14 +19,14 @@
             android:id="@+id/AlertDialogTitle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Title"/>
+            android:text="@string/AlertDialogTitle"/>
 
 
         <TextView
             android:id="@+id/AlertDialogText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Text meseeafe"/>
+            android:text="@string/AlertDialogText"/>
 
     </LinearLayout>
 
