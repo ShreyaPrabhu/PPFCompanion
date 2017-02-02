@@ -42,7 +42,13 @@ public class ValidateEntry {
     private boolean isStartYearValid(String startYear) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        return Integer.parseInt(startYear) >= year;
+        if((Integer.parseInt(startYear) >= year)&&(Integer.parseInt(startYear)<2040)){
+            return true;
+        }
+        else{
+            CreateDialogBox.alertDialog(mContext,"Year Value must lie between " + year + " and " + 2040);
+            return false;
+        }
     }
 
 
