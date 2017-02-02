@@ -4,6 +4,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,12 +22,13 @@ import com.example.shreyaprabhu.ppfcompanion.R;
 
 import java.util.ArrayList;
 
-public class MyPlan extends AppCompatActivity {
+public class MyPlan extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks<Cursor> {
 
     private ArrayList<MyPlanModels> myPlan;
     private MyPlanAdapter myPlanAdapter;
     private RecyclerView my_plan_recyclerView;
-    private Button refresh;
+    private static final int ID_FORECAST_LOADER = 44;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,36 +44,51 @@ public class MyPlan extends AppCompatActivity {
         my_plan_recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         my_plan_recyclerView.setAdapter(myPlanAdapter);
 
-        onClickRetrieve();
+        getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
     }
 
-    public void onClickRetrieve() {
 
-        String URL = "content://com.example.shreyaprabhu.ppfcompanion";
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        CursorLoader loader = new CursorLoader(
+                this,
+                DataContract.PPFEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
+        return loader;
+    }
 
-        Uri plans = Uri.parse(URL);
-        Cursor c =managedQuery(plans, null, null, null, "name");
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 
-        if (c.moveToFirst()) {
-            do{
-                Toast.makeText(this,
-                        c.getString(c.getColumnIndex(DataContract.PPFEntry.COLUMN_PLAN_ID)) +
-                                ", " +  c.getString(c.getColumnIndex(DataContract.PPFEntry.COLUMN_AMOUNT_DEPOSITED)) +
-                                ", " + c.getString(c.getColumnIndex(DataContract.PPFEntry.COLUMN_PPF_MODE)),
-                        Toast.LENGTH_SHORT).show();
-                MyPlanModels myPlanModels = new MyPlanModels();
-                myPlanModels.setId(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_PLAN_ID)));
-                myPlanModels.setStartYear(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_STARTYEAR)));
-                myPlanModels.setPpfModeMessage(c.getString(c.getColumnIndex(DataContract.PPFEntry.COLUMN_PPF_MODE)));
-                myPlanModels.setAmountDeposited(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_AMOUNT_DEPOSITED)));
-                myPlanModels.setMaturityYear(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_MATURITY_YEAR)));
-                myPlanModels.setMaturityAmount(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_MATURITY_AMOUNT)));
-                myPlanModels.setTotalAmountDeposited(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_TOTAL_AMOUNT_DEPOSITED)));
-                myPlanModels.setTotalInterestGained(c.getInt(c.getColumnIndex(DataContract.PPFEntry.COLUMN_TOTAL_INTEREST_GAINED)));
-                myPlan.add(myPlanModels);
-                myPlanAdapter.notifyDataSetChanged();
-            } while (c.moveToNext());
+        if (cursor != null && cursor.getCount() > 0){
+            if (cursor.moveToFirst()) {
+                do{
+                    Toast.makeText(this,
+                            cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PLAN_ID)) +
+                                    ", " +  cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_AMOUNT_DEPOSITED)) +
+                                    ", " + cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PPF_MODE)),
+                            Toast.LENGTH_SHORT).show();
+                    MyPlanModels myPlanModels = new MyPlanModels();
+                    myPlanModels.setId(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PLAN_ID)));
+                    myPlanModels.setStartYear(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_STARTYEAR)));
+                    myPlanModels.setPpfModeMessage(cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PPF_MODE)));
+                    myPlanModels.setAmountDeposited(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_AMOUNT_DEPOSITED)));
+                    myPlanModels.setMaturityYear(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_MATURITY_YEAR)));
+                    myPlanModels.setMaturityAmount(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_MATURITY_AMOUNT)));
+                    myPlanModels.setTotalAmountDeposited(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_TOTAL_AMOUNT_DEPOSITED)));
+                    myPlanModels.setTotalInterestGained(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_TOTAL_INTEREST_GAINED)));
+                    myPlan.add(myPlanModels);
+                    myPlanAdapter.notifyDataSetChanged();
+                } while (cursor.moveToNext());
+            }
         }
     }
 
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
 }

@@ -186,7 +186,7 @@ public class ReportFragment extends Fragment {
 
         @Override
         protected void onProgressUpdate(Void... values) {
-            
+
         }
     }
 
