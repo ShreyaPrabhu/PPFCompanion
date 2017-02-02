@@ -10,4 +10,5 @@
     <color name="startcolor">#f1c40f</color>
 
     <color name="recyclerview_background">#e0e0e0</color>
+    <color name="view_color">#c0c0c0</color>
 </resources>

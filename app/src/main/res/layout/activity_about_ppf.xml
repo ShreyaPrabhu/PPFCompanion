@@ -23,9 +23,9 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="@dimen/view_height"
                 android:layout_marginBottom="@dimen/margin"
-                android:background="#c0c0c0" />
+                android:background="@color/view_color" />
 
         </LinearLayout>
 
@@ -52,9 +52,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,9 +78,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,9 +104,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -130,9 +130,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,9 +156,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -182,9 +182,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -208,9 +208,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -234,9 +234,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -260,9 +260,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#c0c0c0" />
+            android:background="@color/view_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -288,9 +288,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="@dimen/view_height"
             android:layout_marginBottom="@dimen/margin"
-            android:background="#ffffff" />
+            android:background="@color/textcolor" />
 
     </LinearLayout>
 

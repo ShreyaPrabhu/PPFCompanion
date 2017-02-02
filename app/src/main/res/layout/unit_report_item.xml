@@ -18,25 +18,25 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp">
+                android:layout_height="@dimen/S25">
 
                 <TextView
                     android:id="@+id/StartYearTitle"
                     android:text="@string/start_year_title"
-                    android:layout_height="25dp"
+                    android:layout_height="@dimen/S25"
                     android:layout_width="wrap_content" />
 
                 <TextView
                     android:id="@+id/StartYear"
-                    android:layout_height="25dp"
+                    android:layout_height="@dimen/S25"
                     android:layout_width="wrap_content" />
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"
+                android:layout_height="@dimen/view_height"
+                android:background="@color/view_color"
                 android:layout_marginBottom="@dimen/margin" />
 
             <LinearLayout
