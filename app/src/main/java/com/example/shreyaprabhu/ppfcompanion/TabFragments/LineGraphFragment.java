@@ -133,8 +133,8 @@ public class LineGraphFragment extends Fragment implements
 
 
     public static void setYArrayList(){
-        for(int i=0;i<ReportFragment.yLineValues.size();i++)
-        yarrayList.add(ReportFragment.yLineValues.get(i));
+        for(int i=0;i<ReportFragment.finalyLineValues.size();i++)
+        yarrayList.add(ReportFragment.finalyLineValues.get(i));
     }
 
     private ArrayList setXaxisList(){

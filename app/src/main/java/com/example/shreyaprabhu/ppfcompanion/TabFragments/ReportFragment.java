@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,6 +31,7 @@ import com.example.shreyaprabhu.ppfcompanion.ReportAdapter.ReportGenerationAdapt
 import com.example.shreyaprabhu.ppfcompanion.ReportAdapter.ReportGenerationModels;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class ReportFragment extends Fragment {
@@ -43,9 +45,12 @@ public class ReportFragment extends Fragment {
     private int InterestEarned =0;
     public int ClosingBalance;
     String ppfmodemessage;
+    String amountmessage;
+    String startdatemessage;
 
     private ArrayList<ReportGenerationModels> reportGeneration;
     public static ArrayList<Integer>yLineValues;
+    public static ArrayList<Integer>finalyLineValues;
     private ReportGenerationModels reportGenerationModels;
     private ReportGenerationAdapter reportGenerationAdapter;
     private RecyclerView recyclerView;
@@ -61,6 +66,7 @@ public class ReportFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_ppfreport, container, false);
 
         yLineValues = new ArrayList<>();
+        finalyLineValues = new ArrayList<>();
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         maturity_year = (TextView) rootView.findViewById(R.id.maturity_year_value);
@@ -70,8 +76,8 @@ public class ReportFragment extends Fragment {
 
 
         PPFReport ppfReport = (PPFReport)getActivity();
-        String amountmessage = ppfReport.getIntent().getExtras().getString("amountmessage");
-        String startdatemessage = ppfReport.getIntent().getExtras().getString("startdatemessage");
+        amountmessage = ppfReport.getIntent().getExtras().getString("amountmessage");
+        startdatemessage = ppfReport.getIntent().getExtras().getString("startdatemessage");
         ppfmodemessage = ppfReport.getIntent().getExtras().getString("ppfmodemessage");
         Log.v("myData","fragmentData" + amountmessage + " "
                     + startdatemessage + " "
@@ -85,12 +91,24 @@ public class ReportFragment extends Fragment {
 
         assert ppfmodemessage != null;
         if(ppfmodemessage.equals("Fixed Yearly Deposit")){
-            setInitialvaluesforfixedYearAmount(amountmessage,startdatemessage);
-            fixedYearAmountppfCalc(StartYear, ClosingBalance);
+            LongOperationforYear longOperationforYear = new LongOperationforYear();
+            try {
+                finalyLineValues = longOperationforYear.execute().get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
         else{
-            setInitialvaluesforfixedMonthlyAmount(amountmessage,startdatemessage);
-            fixedMonthlyAmountppfCalc(StartYear, ClosingBalance);
+            LongOperationforMonth longOperationforMonth = new LongOperationforMonth();
+            try {
+                finalyLineValues = longOperationforMonth.execute().get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -105,6 +123,72 @@ public class ReportFragment extends Fragment {
         return rootView;
     }
 
+
+    private class LongOperationforYear extends AsyncTask<String,Void,ArrayList<Integer>> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ArrayList<Integer> doInBackground(String... params) {
+            setInitialvaluesforfixedYearAmount(amountmessage,startdatemessage);
+            fixedYearAmountppfCalc(StartYear, ClosingBalance);
+            return yLineValues;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Integer> arrayList) {
+            super.onPostExecute(arrayList);
+            reportGenerationAdapter.notifyDataSetChanged();
+            maturity_year.setText(String.valueOf(StartYear+NoOfYears));
+            maturity_amount.setText(String.valueOf(ClosingBalance));
+            amount_deposited.setText(String.valueOf(AmountDeposited*15));
+            interest_gained.setText(String.valueOf(totalInterest));
+            Log.v("myInterest3","totalInterest"+totalInterest);
+            toPieInterest = totalInterest;
+            toPieAmountDeposited = AmountDeposited*15;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+    }
+
+    private class LongOperationforMonth extends AsyncTask<String,Void,ArrayList<Integer>> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ArrayList<Integer> doInBackground(String... params) {
+            setInitialvaluesforfixedMonthlyAmount(amountmessage,startdatemessage);
+            fixedMonthlyAmountppfCalc(StartYear, ClosingBalance);
+            return yLineValues;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Integer> arrayList) {
+            super.onPostExecute(arrayList);
+            reportGenerationAdapter.notifyDataSetChanged();
+            maturity_year.setText(String.valueOf(StartYear+NoOfYears));
+            maturity_amount.setText(String.valueOf(ClosingBalance));
+            amount_deposited.setText(String.valueOf(AmountDeposited*15*12));
+            interest_gained.setText(String.valueOf(totalInterest));
+            toPieInterest = totalInterest;
+            toPieAmountDeposited = AmountDeposited*15*12;
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            
+        }
+    }
 
 
     public void setInitialvaluesforfixedYearAmount(String amountmessage, String startdatemessage){
@@ -126,11 +210,10 @@ public class ReportFragment extends Fragment {
         reportGenerationModels.setInterestEarned(InterestEarned);
         reportGenerationModels.setClosingBalance(ClosingBalance);
         reportGeneration.add(reportGenerationModels);
-        reportGenerationAdapter.notifyDataSetChanged();
-
     }
 
     public void setInitialvaluesforfixedMonthlyAmount(String amountmessage, String startdatemessage){
+        totalInterest = 0;
         StartYear = Integer.parseInt(startdatemessage);
         NoOfYears = 15;
         AmountDeposited =Integer.parseInt(amountmessage);
@@ -148,8 +231,6 @@ public class ReportFragment extends Fragment {
         reportGenerationModels.setInterestEarned(InterestEarned);
         reportGenerationModels.setClosingBalance(ClosingBalance);
         reportGeneration.add(reportGenerationModels);
-        reportGenerationAdapter.notifyDataSetChanged();
-
     }
 
     public int getCompoundedInterestforOneYear(int amountDeposited,int ad){
@@ -164,54 +245,6 @@ public class ReportFragment extends Fragment {
         }
         return (int)interest;
     }
-
-
-    public void fixedMonthlyAmountppfCalc(int Year, int CBalance){
-        int i = 1;
-        while(i!=NoOfYears)
-        {
-
-            int OBalance;
-            int intermediateResult;
-            int interest;
-            ReportGenerationModels reportModels = new ReportGenerationModels();
-
-            Year = Year+1;
-            reportModels.setStartYear(Year);
-
-            OBalance = CBalance;
-            reportModels.setOpeningBalance(OBalance);
-
-            reportModels.setAmountDeposited(AmountDeposited*12);
-
-            intermediateResult = (CBalance + (AmountDeposited));
-            interest = getCompoundedInterestforOneYear(intermediateResult,AmountDeposited);
-            totalInterest += interest;
-            reportModels.setInterestEarned(interest);
-
-            CBalance += (AmountDeposited*12) + interest;
-            yLineValues.add(CBalance);
-            reportModels.setClosingBalance(CBalance);
-
-            reportGeneration.add(reportModels);
-            Log.v("myModels","models" + reportModels.getAmountDeposited() + " "
-                    + reportModels.getClosingBalance() + " "
-                    + reportModels.getInterestEarned() + " "
-                    + reportModels.getOpeningBalance() + " "
-                    + reportModels.getStartYear() + " ");
-
-            i++;
-        }
-        reportGenerationAdapter.notifyDataSetChanged();
-        maturity_year.setText(String.valueOf(StartYear+NoOfYears));
-        maturity_amount.setText(String.valueOf(CBalance));
-        amount_deposited.setText(String.valueOf(AmountDeposited*15*12));
-        interest_gained.setText(String.valueOf(totalInterest));
-        toPieInterest = totalInterest;
-        toPieAmountDeposited = AmountDeposited*15*12;
-
-    }
-
 
     public void fixedYearAmountppfCalc(int Year, int CBalance){
         int i = 1;
@@ -251,15 +284,52 @@ public class ReportFragment extends Fragment {
             i++;
         }
         ClosingBalance = CBalance;
-        reportGenerationAdapter.notifyDataSetChanged();
-        maturity_year.setText(String.valueOf(StartYear+NoOfYears));
-        maturity_amount.setText(String.valueOf(ClosingBalance));
-        amount_deposited.setText(String.valueOf(AmountDeposited*15));
-        interest_gained.setText(String.valueOf(totalInterest));
-        Log.v("myInterest3","totalInterest"+totalInterest);
-        toPieInterest = totalInterest;
-        toPieAmountDeposited = AmountDeposited*15;
+
     }
+
+
+
+    public void fixedMonthlyAmountppfCalc(int Year, int CBalance){
+        int i = 1;
+        while(i!=NoOfYears)
+        {
+
+            int OBalance;
+            int intermediateResult;
+            int interest;
+            ReportGenerationModels reportModels = new ReportGenerationModels();
+
+            Year = Year+1;
+            reportModels.setStartYear(Year);
+
+            OBalance = CBalance;
+            reportModels.setOpeningBalance(OBalance);
+
+            reportModels.setAmountDeposited(AmountDeposited*12);
+
+            intermediateResult = (CBalance + (AmountDeposited));
+            interest = getCompoundedInterestforOneYear(intermediateResult,AmountDeposited);
+            totalInterest += interest;
+            reportModels.setInterestEarned(interest);
+
+            CBalance += (AmountDeposited*12) + interest;
+            yLineValues.add(CBalance);
+            reportModels.setClosingBalance(CBalance);
+
+            reportGeneration.add(reportModels);
+            Log.v("myModels","models" + reportModels.getAmountDeposited() + " "
+                    + reportModels.getClosingBalance() + " "
+                    + reportModels.getInterestEarned() + " "
+                    + reportModels.getOpeningBalance() + " "
+                    + reportModels.getStartYear() + " ");
+
+            i++;
+        }
+        ClosingBalance = CBalance;
+
+    }
+
+
 
 
     public void onClickAdd() {
