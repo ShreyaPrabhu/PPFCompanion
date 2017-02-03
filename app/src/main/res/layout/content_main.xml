@@ -125,6 +125,7 @@
                 android:id="@+id/calculate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/calculate"
                 android:text="@string/calculate" />
 
 
@@ -132,6 +133,7 @@
                 android:id="@+id/refresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/refresh"
                 android:layout_marginLeft="@dimen/refresh_margin"
                 android:text="@string/refresh" />
 
@@ -144,6 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             ads:adSize="BANNER"
+            android:contentDescription="@string/ads"
             ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
 
     </LinearLayout>

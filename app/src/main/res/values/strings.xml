@@ -36,6 +36,9 @@
     <string name="refresh">REFRESH</string>
     <string name="no_of_years">15</string>
 
+    <string name="add_plan">Add plan</string>
+    <string name="ads">ads</string>
+
     <!--fragment_ppfreport-->
     <string name="maturity_year">Maturity Year : </string>
     <string name="maturity_amount">Maturity Amount : </string>
