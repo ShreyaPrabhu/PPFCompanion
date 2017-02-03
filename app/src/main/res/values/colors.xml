@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FFC107</color>
     <color name="colorPrimaryDark">#FFA000</color>
-    <color name="colorAccent">#90A4AE</color>
+    <color name="colorAccent">#337CEE</color>
     <color name="textcolor">#ffffff</color>
 
     <color name="centercolor">#f39c12</color>
@@ -11,4 +11,6 @@
 
     <color name="recyclerview_background">#e0e0e0</color>
     <color name="view_color">#c0c0c0</color>
+
+    <color name="black">#000000</color>
 </resources>
