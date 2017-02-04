@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        date.setText(year+"");
+        date.setText(String.valueOf(year));
 
         calculate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -115,10 +115,10 @@ public class MainActivity extends AppCompatActivity
         refresh.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 recreate();
-                amount_deposited.setText("");
+                amount_deposited.setText(getString(R.string.empty));
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
-                date.setText(year+"");
+                date.setText(String.valueOf(year));
 
             }
         });
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        Toast.makeText(this,"Selected mode is " + adapterView.getItemAtPosition(i),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,getString(R.string.toast_mainActivity) + adapterView.getItemAtPosition(i),Toast.LENGTH_SHORT).show();
         ppfmode = adapterView.getItemAtPosition(i).toString();
     }
 

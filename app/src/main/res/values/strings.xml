@@ -130,4 +130,6 @@
     <string name="year_validity">Year Value must lie between&#160;</string>
     <string name="and">&#160;and&#160;</string>
     <string name="provide_data">You need to provide data for the chart.</string>
+    <string name="toast_mainActivity">Selected mode is&#160;</string>
+    <string name="empty"></string>
 </resources>

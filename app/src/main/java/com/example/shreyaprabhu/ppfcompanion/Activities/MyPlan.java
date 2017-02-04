@@ -66,11 +66,7 @@ public class MyPlan extends AppCompatActivity implements
         if (cursor != null && cursor.getCount() > 0){
             if (cursor.moveToFirst()) {
                 do{
-                    Toast.makeText(this,
-                            cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PLAN_ID)) +
-                                    ", " +  cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_AMOUNT_DEPOSITED)) +
-                                    ", " + cursor.getString(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PPF_MODE)),
-                            Toast.LENGTH_SHORT).show();
+
                     MyPlanModels myPlanModels = new MyPlanModels();
                     myPlanModels.setId(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_PLAN_ID)));
                     myPlanModels.setStartYear(cursor.getInt(cursor.getColumnIndex(DataContract.PPFEntry.COLUMN_STARTYEAR)));

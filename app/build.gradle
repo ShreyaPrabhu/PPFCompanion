@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
 
+    signingConfigs {
         config {
             keyAlias 'PPFCompanion'
             keyPassword 'shreya'
@@ -28,7 +28,6 @@ android {
             signingConfig signingConfigs.config
         }
         debug {
-            signingConfig signingConfigs.config
         }
     }
 }
