@@ -22,7 +22,7 @@ public class CreateDialogBox {
 
     public static void alertDialog(Context mContext, String alertMessage){
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-        alertDialogBuilder.setTitle("Alert!");
+        alertDialogBuilder.setTitle(R.string.AlertDialogTitle);
         alertDialogBuilder.setMessage(alertMessage);
         final AlertDialog alert = alertDialogBuilder.create();
         alert.show();

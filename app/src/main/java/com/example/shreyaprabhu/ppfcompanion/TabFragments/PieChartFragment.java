@@ -34,12 +34,12 @@ public class PieChartFragment extends Fragment {
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
 
         ArrayList<String> labels = new ArrayList<String>();
-        labels.add("Total Amount Deposit");
-        labels.add("Total Interest Gained");
+        labels.add(getContext().getString(R.string.amount_deposited));
+        labels.add(getContext().getString(R.string.interest_gained));
 
         PieData data = new PieData(labels, dataset);
         pieChart.setData(data);
-        pieChart.setDescription("Amount Deposited vs Interest gained at Maturity                            ");
+        pieChart.setDescription(getContext().getString(R.string.piechart_title));
 
 
         return rootView;

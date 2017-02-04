@@ -42,8 +42,8 @@ public class LineGraphFragment extends Fragment implements
 
         mChart = (LineChart) rootView.findViewById(R.id.linechart);
         mChart.setTouchEnabled(true);
-        mChart.setDescription("Closing Amount over Time                         ");
-        mChart.setNoDataTextDescription("You need to provide data for the chart.");
+        mChart.setDescription(getContext().getString(R.string.linegraph_title));
+        mChart.setNoDataTextDescription(getContext().getString(R.string.provide_data));
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(true);
         mChart.animateX(2500, Easing.EasingOption.EaseInOutQuart);
@@ -158,8 +158,8 @@ public class LineGraphFragment extends Fragment implements
         ArrayList<Entry> yVals = setYaxisList();
 
         LineDataSet set1;
-
-        set1 = new LineDataSet(yVals, "DataSet 1");
+        //Android Library doesnt take string literal from strings.xml
+        set1 = new LineDataSet(yVals,getContext().getString(R.string.dataset));
         set1.setFillAlpha(110);
 
         set1.setColor(Color.BLACK);

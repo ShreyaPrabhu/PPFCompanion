@@ -114,4 +114,20 @@
     <string name="Answer10">A PPF a/c. is not transferable from one individual to another, as such the
         nominee cannot continue the account of a deceased subscriber in his own name.</string>
 
+
+    <!-- LineGraph   -->
+
+    <string name="linegraph_title">Closing Amount over Time&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="dataset">DataSet&#160;1</string>
+    <string name="share_message">PPFCompanion - PPF (Public Provident Fund) calculator for the people of India. App provides reports and graphs based on type of PPF mode and amount being deposited.&#160;</string>
+    <string name="piechart_title">Amount Deposited vs Interest gained at Maturity&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="report">REPORT</string>
+    <string name="linegraph">LINE GRAPH</string>
+    <string name="piechart">PIE CHART</string>
+    <string name="ppfmode">Fixed Yearly Deposit</string>
+    <string name="enter_details">Please enter all the details</string>
+    <string name="amount_validity">Amount Deposite should be greater than 500</string>
+    <string name="year_validity">Year Value must lie between&#160;</string>
+    <string name="and">&#160;and&#160;</string>
+    <string name="provide_data">You need to provide data for the chart.</string>
 </resources>

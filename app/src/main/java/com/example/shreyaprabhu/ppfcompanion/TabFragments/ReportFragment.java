@@ -90,7 +90,7 @@ public class ReportFragment extends Fragment {
         recyclerView.setAdapter(reportGenerationAdapter);
 
         assert ppfmodemessage != null;
-        if(ppfmodemessage.equals("Fixed Yearly Deposit")){
+        if(ppfmodemessage.equals(getContext().getString(R.string.ppfmode))){
             LongOperationforYear longOperationforYear = new LongOperationforYear();
             try {
                 finalyLineValues = longOperationforYear.execute().get();

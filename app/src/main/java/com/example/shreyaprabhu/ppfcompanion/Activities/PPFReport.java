@@ -46,9 +46,9 @@ public class PPFReport extends AppCompatActivity {
 
     private void setupViewPager(final ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new ReportFragment(),"REPORT");
-        adapter.addFrag(new LineGraphFragment(),"LINE GRAPH");
-        adapter.addFrag(new PieChartFragment(),"PIE CHART");
+        adapter.addFrag(new ReportFragment(),getApplicationContext().getString(R.string.report));
+        adapter.addFrag(new LineGraphFragment(),getApplicationContext().getString(R.string.linegraph));
+        adapter.addFrag(new PieChartFragment(),getApplicationContext().getString(R.string.piechart));
         viewPager.setAdapter(adapter);
 
     }

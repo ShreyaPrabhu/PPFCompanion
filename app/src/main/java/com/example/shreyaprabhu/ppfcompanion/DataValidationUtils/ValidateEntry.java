@@ -4,6 +4,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.shreyaprabhu.ppfcompanion.R;
+
 import java.text.ParseException;
 import java.util.Calendar;
 
@@ -21,7 +23,7 @@ public class ValidateEntry {
         boolean x = TextUtils.isEmpty(amount) || TextUtils.isEmpty(year);
         Log.v("my","x" + x);
         if(x){
-            CreateDialogBox.alertDialog(mContext,"Please enter all the details");
+            CreateDialogBox.alertDialog(mContext, mContext.getString(R.string.enter_details));
             return true;
         }
         return false;
@@ -32,7 +34,7 @@ public class ValidateEntry {
             return true;
         }
         else{
-            CreateDialogBox.alertDialog(mContext,"Amount Deposite should be greater than 500");
+            CreateDialogBox.alertDialog(mContext,mContext.getString(R.string.amount_validity));
             return false;
         }
 
@@ -46,7 +48,7 @@ public class ValidateEntry {
             return true;
         }
         else{
-            CreateDialogBox.alertDialog(mContext,"Year Value must lie between " + year + " and " + 2040);
+            CreateDialogBox.alertDialog(mContext,mContext.getString(R.string.year_validity) + year + mContext.getString(R.string.and) + 2040);
             return false;
         }
     }

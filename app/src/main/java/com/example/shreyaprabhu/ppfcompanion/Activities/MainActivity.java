@@ -170,12 +170,10 @@ public class MainActivity extends AppCompatActivity
 
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBody = "PPFCompanion - \n" +
-                    "PPF (Public Provident Fund) calculator for the people of India." +
-                    " App provides reports and graphs based on type of PPF mode and amount being deposited. ";
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "PPFCompanion");
+            String shareBody = this.getString(R.string.share_message);
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, this.getString(R.string.app_name));
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            startActivity(Intent.createChooser(sharingIntent, "Share "));
+            startActivity(Intent.createChooser(sharingIntent, this.getString(R.string.share)));
 
         }
 
