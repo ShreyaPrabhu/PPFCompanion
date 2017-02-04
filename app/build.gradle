@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'PPFCompanion'
             keyPassword 'shreya'
-            storeFile file('C:/Users/HP/AndroidStudioProjects/PPFCompanionkeystore.jks')
+            storeFile file('PPFCompanionkeystore.jks')
             storePassword 'shreya96'
         }
     }
