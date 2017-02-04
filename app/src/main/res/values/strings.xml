@@ -40,10 +40,10 @@
     <string name="ads">ads</string>
 
     <!--fragment_ppfreport-->
-    <string name="maturity_year">Maturity Year : </string>
-    <string name="maturity_amount">Maturity Amount : </string>
-    <string name="amount_deposited">Total Amount Deposited : </string>
-    <string name="interest_gained">Total Interest Gained : </string>
+    <string name="maturity_year">Maturity Year </string>
+    <string name="maturity_amount">Maturity Amount</string>
+    <string name="amount_deposited">Total Amount Deposited</string>
+    <string name="interest_gained">Total Interest Gained</string>
 
     <!--unit_report_item -->
     <string name="start_year_title">REPORT FOR YEAR </string>
@@ -54,8 +54,8 @@
 
     <!--my_plan_item-->
     <string name="my_plan_title">My Plan </string>
-    <string name="start_year_title_my_plan">Plan Start Year : </string>
-    <string name="ppf_mode_title">PPF Mode : </string>
+    <string name="start_year_title_my_plan">Plan Start Year</string>
+    <string name="ppf_mode_title">PPF Mode</string>
     <string name="delete_my_plan">DELETE</string>
 
     <!--my_dialog -->

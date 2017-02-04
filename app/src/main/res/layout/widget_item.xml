@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginBottom="4dp"
-    android:background="@color/recyclerview_background">
+    android:background="@color/recyclerview_background"
+    android:layoutDirection="ltr">
 
     <LinearLayout
         android:layout_width="match_parent"
